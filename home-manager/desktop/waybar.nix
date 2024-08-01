@@ -1,11 +1,4 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  stylix,
-  ...
-}:
+{ lib, pkgs, ... }:
 let
   dropNLines =
     path: n:

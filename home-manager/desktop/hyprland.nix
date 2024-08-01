@@ -1,10 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-{
+_: {
 
   programs.hyprlock = {
     enable = true;

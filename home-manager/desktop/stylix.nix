@@ -1,11 +1,4 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  stylix,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
   stylix = {
