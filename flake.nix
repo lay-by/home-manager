@@ -26,22 +26,18 @@
       inherit (self) outputs;
     in
     {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        # FIXME replace with your hostname
         blind-faith = nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs;
           };
-          # > Our main nixos configuration file <
           modules = [ ./nixos/configuration.nix ];
         };
       };
 
       homeConfigurations = {
         "hushh@blind-faith" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs;
           };
