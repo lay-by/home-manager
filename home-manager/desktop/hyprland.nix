@@ -63,10 +63,7 @@ _: {
 
       preload = [ "~/Pictures/papes/romanbleedsolarized.png" ];
 
-      wallpaper = [
-        "DP-1, ~/Pictures/papes/romanbleedsolarized.png"
-        "HDMI-A-1, ~/Pictures/papes/romanbleedsolarized.png"
-      ];
+      wallpaper = [ ", ~/Pictures/papes/romanbleedsolarized.png" ];
     };
   };
 
