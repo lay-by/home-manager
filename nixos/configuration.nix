@@ -64,7 +64,6 @@
       "disk"
       "libvirtd"
     ];
-    packages = with pkgs; [ ];
   };
 
   nixpkgs = {
