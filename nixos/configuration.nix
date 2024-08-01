@@ -9,6 +9,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./fonts.nix
     ./nixpkgs.nix
     ./packages.nix
     ./programs.nix
@@ -67,38 +68,6 @@
       "disk"
       "libvirtd"
     ];
-  };
-
-  fonts = {
-    enableDefaultPackages = true;
-    packages = builtins.attrValues {
-      inherit (pkgs)
-        noto-fonts
-        noto-fonts-cjk
-        noto-fonts-emoji
-        liberation_ttf
-        fira-code
-        fira-code-symbols
-        dina-font
-        proggyfonts
-        meslo-lgs-nf
-        victor-mono
-        monaspace
-        twemoji-color-font
-        sarasa-gothic
-        nerdfonts
-        ;
-    };
-
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        monospace = [ "Iosevka Nerd Font Mono" ];
-        sansSerif = [ "SF Pro Text" ];
-        serif = [ "New York Medium" ];
-        emoji = [ "Twitter Color Emoji" ];
-      };
-    };
   };
 
   networking.firewall.enable = false;

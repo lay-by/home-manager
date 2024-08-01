@@ -12,6 +12,9 @@
 
     #Color Themeing
     stylix.url = "github:danth/stylix";
+
+    # Apple Fonts
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs =
@@ -20,16 +23,18 @@
       nixpkgs,
       home-manager,
       stylix,
+      apple-fonts,
       ...
     }@inputs:
     let
       inherit (self) outputs;
+      inherit apple-fonts;
     in
     {
       nixosConfigurations = {
         blind-faith = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs apple-fonts;
           };
           modules = [ ./nixos/configuration.nix ];
         };
