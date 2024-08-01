@@ -12,10 +12,10 @@
     # inputs.nix-colors.homeManagerModule
 
     #inputs.hyprland.homeManagerModules.default
-    ./desktop/waybar.nix
-    ./desktop/hyprland.nix
+    ./hyprland/waybar.nix
+    ./hyprland/hyprland.nix
     ./desktop/stylix.nix
-    #./desktop/dunst.nix
+    # ./hyprland/dunst.nix
   ];
 
   nixpkgs = {
@@ -112,13 +112,13 @@
   };
 
   # Enable home-manager and git
-  programs = { 
+  programs = {
     home-manager.enable = true;
     git = {
       enable = true;
       userEmail = "44959695+lay-by@users.noreply.github.com";
       userName = "lay-by";
-      delta.enable = true; 
+      delta.enable = true;
     };
     gh = {
       enable = true;

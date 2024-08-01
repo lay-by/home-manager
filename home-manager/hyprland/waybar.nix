@@ -88,7 +88,7 @@ in
           exec = lib.getExe (
             pkgs.writeShellApplication {
               name = "music.sh";
-              text = dropNLines ./scripts/music.sh 1;
+              text = dropNLines ../desktop/scripts/music.sh 1;
               runtimeInputs = builtins.attrValues { inherit (pkgs) playerctl gnugrep uutils-coreutils-noprefix; };
             }
           );
@@ -96,7 +96,7 @@ in
         "custom/nvidia" = {
           format = " {}";
           interval = 1;
-          exec = ./scripts/nvidia.sh;
+          exec = ../desktop/scripts/nvidia.sh;
         };
         # There might already be a custom module for this but I'm just going to use my old script.
         "custom/weather" = {
@@ -105,7 +105,7 @@ in
           exec = lib.getExe (
             pkgs.writeShellApplication {
               name = "weather.sh";
-              text = dropNLines ./scripts/weather.sh 1;
+              text = dropNLines ../desktop/scripts/weather.sh 1;
               runtimeInputs = builtins.attrValues { inherit (pkgs) curl jq; };
             }
           );
