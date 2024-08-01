@@ -2,7 +2,9 @@
 {
   imports = [
     ./hyprland/waybar.nix
+    ./hyprland/hypridle.nix
     ./hyprland/hyprland.nix
+    ./hyprland/hyprlock.nix
     ./desktop/stylix.nix
     # ./hyprland/dunst.nix
   ];
