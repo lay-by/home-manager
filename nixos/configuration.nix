@@ -9,6 +9,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./programs.nix
     ./services.nix
   ];
 
@@ -116,41 +117,6 @@
     inherit (pkgs) seahorse breeze-gtk;
   };
 
-  programs = {
-    thunar = {
-      enable = true;
-      plugins = builtins.attrValues { inherit (pkgs.xfce) thunar-archive-plugin thunar-volman; };
-    };
-
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-
-    gamescope.enable = true;
-    hyprland.enable = true;
-    fish.enable = true;
-    kdeconnect.enable = true;
-
-    #use fish as main shell
-    bash = {
-      interactiveShellInit = ''
-        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-        then
-          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-        fi
-      '';
-    };
-
-    git = {
-      enable = true;
-      package = pkgs.gitFull;
-      config.credential.helper = "libsecret";
-    };
-  };
-
   nixpkgs.config.packageOverrides = pkgs: {
 
     steam = pkgs.steam.override {
@@ -255,14 +221,6 @@
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
     ];
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
   };
 
   # Open ports in the firewall.
