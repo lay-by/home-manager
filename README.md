@@ -7,7 +7,6 @@ TODO:
 - rofi
 - git config
 - dunst config
-- spicetify-
 
 - mute bind for discord (include sound cue?)
 - get titanfall 2 and/or gamescope working correctly

@@ -15,6 +15,9 @@
 
     # Apple Fonts
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -24,6 +27,7 @@
       home-manager,
       stylix,
       apple-fonts,
+      spicetify-nix,
       ...
     }@inputs:
     let
@@ -44,11 +48,12 @@
         "hushh@blind-faith" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs;
+            inherit inputs outputs spicetify-nix;
           };
           modules = [
             ./home-manager/home.nix
             stylix.homeManagerModules.stylix
+            spicetify-nix.homeManagerModules.default
           ];
         };
       };

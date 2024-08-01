@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, spicetify-nix, ... }:
 {
   imports = [
     ./hyprland/waybar.nix
@@ -76,22 +76,6 @@
     inherit (pkgs.kdePackages) breeze;
   };
 
-  xdg.desktopEntries = {
-    spotify = {
-      type = "Application";
-      name = "Spotify (Adblock)";
-      genericName = "Music Player";
-      icon = "spotify-client";
-      categories = [
-        "Audio"
-        "Music"
-        "Player"
-        "AudioVideo"
-      ];
-      exec = "env LD_PRELOAD=/home/hushh/nix-config/home-manager/spotify-adblock.so spotify";
-    };
-  };
-
   programs = {
     home-manager.enable = true;
     git = {
@@ -104,6 +88,24 @@
       enable = true;
       gitCredentialHelper.enable = true;
     };
+    spicetify =
+      let
+        spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+      in
+      {
+        enable = true;
+        enabledExtensions = builtins.attrValues {
+          inherit (spicePkgs.extensions)
+            adblock # NO❗❗❗ 🙀 😾 HOW WILL SPOTIFY MAKE MONEY FROM THEIR AI-GENERATED SONGS AND KEEP ALL THE PROFITS FOR THEMSELVES?! *(Allegedly)*
+            beautifulLyrics # Apple Music like Lyrics
+            copyLyrics
+            fullAppDisplay # Shows the song cover, title, and artist in fullscreen.
+            fullAlbumDate
+            popupLyrics # Popup window with the current song's lyrics scrolling across it
+            shuffle # Shuffle properly, using Fisher-Yates with zero bias
+            ;
+        };
+      };
   };
   fonts.fontconfig.enable = true;
 
