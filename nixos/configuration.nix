@@ -8,8 +8,9 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     ./fonts.nix
+    ./hardware-configuration.nix
+    ./hardware.nix
     ./nixpkgs.nix
     ./packages.nix
     ./programs.nix
@@ -82,22 +83,6 @@
     NVD_BACKEND = "direct";
     WLR_DRM_NO_ATOMIC = "1";
     NIXOS_OZONE_WL = "1";
-  };
-
-  #configure extra nvidia options
-  hardware.nvidia = {
-    modesetting.enable = true;
-    nvidiaSettings = true;
-  };
-
-  #use newer nvidia package
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    version = "555.58";
-    sha256_64bit = "sha256-bXvcXkg2kQZuCNKRZM5QoTaTjF4l2TtrsKUvyicj5ew=";
-    sha256_aarch64 = lib.fakeSha256;
-    openSha256 = lib.fakeSha256;
-    settingsSha256 = "sha256-vWnrXlBCb3K5uVkDFmJDVq51wrCoqgPF03lSjZOuU8M=";
-    persistencedSha256 = lib.fakeSha256;
   };
 
   xdg.portal = {
