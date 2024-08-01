@@ -1,11 +1,4 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  stylix,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./hyprland/waybar.nix
