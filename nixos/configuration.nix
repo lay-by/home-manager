@@ -75,53 +75,51 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # Base System
-    wget
-    git
-    libsecret
-    #desktop
-    hyprpaper
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    xwayland
-    waybar
-    wofi
-    hyprpaper
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    wayland-protocols
-    wayland-utils
-    wl-clipboard
-    wlroots
-    dunst
-    # Development
-    meson
-    gcc
-    glibc
-    jq
-    cachix
-    bc
-    ninja
-    # Misc System
-    breeze-icons
-    gnome-tweaks
-    kdePackages.breeze
-    ssh-askpass-fullscreen
-    pkgs.libsForQt5.kdeconnect-kde
-    seahorse
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      # Base System
+      wget
+      git
+      libsecret
+
+      # Desktop
+      hyprpaper
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+      xwayland
+      waybar
+      wofi
+      wayland-protocols
+      wayland-utils
+      wl-clipboard
+      wlroots
+      dunst
+
+      # Development
+      meson
+      gcc
+      glibc
+      jq
+      cachix
+      bc
+      ninja
+
+      # Misc System
+      breeze-icons
+      gnome-tweaks
+      ssh-askpass-fullscreen
+      ;
+
     # Theme stuff
-    breeze-icons
-    breeze-gtk
-  ];
+    inherit (pkgs.kdePackages) breeze;
+    inherit (pkgs.libsForQt5) kdeconnect-kde;
+    inherit (pkgs) seahorse breeze-gtk;
+  };
 
   programs = {
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-volman
-      ];
+      plugins = builtins.attrValues { inherit (pkgs.xfce) thunar-archive-plugin thunar-volman; };
     };
 
     steam = {
@@ -156,45 +154,58 @@
   nixpkgs.config.packageOverrides = pkgs: {
 
     steam = pkgs.steam.override {
+      # The extraPkgs attribute expects a function that takes a package set (p)
+      # and returns a list of packages. We use lib.attrValues to convert the
+      # attribute set to a list of package values.
+      # https://github.com/NixOS/nixpkgs/blob/fc27807b85986bb26a8f28e590e01fae742e6b53/pkgs/games/steam/fhsenv.nix#L3
       extraPkgs =
-        pkgs: with pkgs; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-          mono
-          gtk3
-          gtk3-x11
-          libgdiplus
-          zlib
-        ];
+        p:
+        lib.attrValues {
+          inherit (pkgs.xorg)
+            libXcursor
+            libXi
+            libXinerama
+            libXScrnSaver
+            ;
+
+          inherit (pkgs)
+            libpng
+            libpulseaudio
+            libvorbis
+            libkrb5
+            keyutils
+            mono
+            gtk3
+            gtk3-x11
+            libgdiplus
+            zlib
+            ;
+
+          inherit (pkgs.stdenv.cc.cc) lib;
+        };
     };
   };
 
   fonts = {
     enableDefaultPackages = true;
-    packages = with pkgs; [
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      liberation_ttf
-      fira-code
-      fira-code-symbols
-      dina-font
-      proggyfonts
-      meslo-lgs-nf
-      victor-mono
-      monaspace
-      twemoji-color-font
-      sarasa-gothic
-      nerdfonts
-    ];
+    packages = builtins.attrValues {
+      inherit (pkgs)
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        liberation_ttf
+        fira-code
+        fira-code-symbols
+        dina-font
+        proggyfonts
+        meslo-lgs-nf
+        victor-mono
+        monaspace
+        twemoji-color-font
+        sarasa-gothic
+        nerdfonts
+        ;
+    };
 
     fontconfig = {
       enable = true;

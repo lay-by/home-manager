@@ -28,52 +28,58 @@
     homeDirectory = "/home/hushh";
   };
 
-  home.packages = with pkgs; [
-    #base apps    
-    firefox
-    pavucontrol
-    vesktop
-    dolphin
-    networkmanagerapplet
-    breeze-icons
-    konsole
-    spotify
-    ark
-    kdePackages.breeze
-    desktop-file-utils
-    rofi-wayland
-    unzip
-    element-desktop
-    gimp
-    hyprshot
-    hyprcursor
-    htop
-    mpv
-    #gaming
-    gpu-screen-recorder
-    gpu-screen-recorder-gtk
-    protontricks
-    gwe
-    libnvidia-container
-    lutris
-    #development
-    neovim
-    vscode
-    gnumake
-    nixfmt-rfc-style
-    meson
-    cmake
-    font-manager
-    #misc productivity
-    gimp
-    grim
-    swappy
-    slurp
-    kdenlive
-    playerctl
-    # Theme stuff
-    papirus-folders
-  ];
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      # Base apps    
+      firefox
+      pavucontrol
+      vesktop
+      dolphin
+      networkmanagerapplet
+      breeze-icons
+      konsole
+      spotify
+      ark
+      desktop-file-utils
+      rofi-wayland
+      unzip
+      element-desktop
+      gimp
+      hyprshot
+      hyprcursor
+      htop
+      mpv
+
+      # Gaming
+      gpu-screen-recorder
+      gpu-screen-recorder-gtk
+      protontricks
+      gwe
+      libnvidia-container
+      lutris
+
+      # Development
+      neovim
+      vscode
+      gnumake
+      nixfmt-rfc-style
+      meson
+      cmake
+      font-manager
+
+      # Misc productivity
+      grim
+      swappy
+      slurp
+      kdenlive
+      playerctl
+
+      # Theme stuff
+      papirus-folders
+      ;
+
+    inherit (pkgs.kdePackages) breeze;
+  };
 
   xdg.desktopEntries = {
     spotify = {
