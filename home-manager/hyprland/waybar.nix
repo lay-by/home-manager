@@ -85,13 +85,7 @@ in
           format = "󰎇 {} 󰎇";
           interval = 1;
           on-click = "playerctl -p spotify play-pause";
-          exec = lib.getExe (
-            pkgs.writeShellApplication {
-              name = "music.sh";
-              text = dropNLines ../scripts/music.sh 1;
-              runtimeInputs = builtins.attrValues { inherit (pkgs) playerctl gnugrep uutils-coreutils-noprefix; };
-            }
-          );
+          exec = "../scripts/music.sh";
         };
         "custom/nvidia" = {
           format = " {}";
@@ -101,13 +95,7 @@ in
         # There might already be a custom module for this but I'm just going to use my old script.
         "custom/weather" = {
           interval = 900;
-          exec = lib.getExe (
-            pkgs.writeShellApplication {
-              name = "weather.sh";
-              text = dropNLines ../scripts/weather.sh 1;
-              runtimeInputs = builtins.attrValues { inherit (pkgs) curl jq; };
-            }
-          );
+          exec = "/scripts/weather.sh";
         };
       }
     ];

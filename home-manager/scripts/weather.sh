@@ -38,7 +38,7 @@ get_icon() {
             #*) icon="";
     esac
 
-    echo $icon
+    echo "$icon"
 }
 
 KEY="a78c793d7f2431574ca9c5f56e74fc9b"
