@@ -35,7 +35,7 @@
 
     # Theme stuff
     inherit (pkgs.kdePackages) breeze;
-    inherit (pkgs.libsForQt5) kdeconnect-kde;
+    inherit (pkgs.libsForQt5) kdeconnect-kde plasma-systemmonitor;
     inherit (pkgs) seahorse breeze-gtk;
   };
 }

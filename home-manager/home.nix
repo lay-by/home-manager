@@ -14,7 +14,7 @@
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
-      cudaSupport = true;
+      #cudaSupport = true;
     };
   };
 
@@ -99,7 +99,7 @@
             adblock # NO❗❗❗ 🙀 😾 HOW WILL SPOTIFY MAKE MONEY FROM THEIR AI-GENERATED SONGS AND KEEP ALL THE PROFITS FOR THEMSELVES?! *(Allegedly)*
             beautifulLyrics # Apple Music like Lyrics
             copyLyrics
-            fullAppDisplay # Shows the song cover, title, and artist in fullscreen.
+            #fullAppDisplay # Shows the song cover, title, and artist in fullscreen.
             fullAlbumDate
             popupLyrics # Popup window with the current song's lyrics scrolling across it
             shuffle # Shuffle properly, using Fisher-Yates with zero bias
