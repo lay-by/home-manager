@@ -85,17 +85,17 @@ in
           format = "󰎇 {} 󰎇";
           interval = 1;
           on-click = "playerctl -p spotify play-pause";
-          exec = "../scripts/music.sh";
+          exec = "/home/hushh/nix-config/home-manager/scripts/music.sh";
         };
         "custom/nvidia" = {
           format = " {}";
           interval = 1;
-          exec = ../scripts/nvidia.sh;
+          exec = /home/hushh/nix-config/home-manager/scripts/nvidia.sh;
         };
         # There might already be a custom module for this but I'm just going to use my old script.
         "custom/weather" = {
           interval = 900;
-          exec = "/scripts/weather.sh";
+          exec = "/home/hushh/nix-config/home-manager/scripts/weather.sh";
         };
       }
     ];
@@ -108,6 +108,8 @@ in
           border-radius: 0px;
           border: none;
           min-height: 0;
+          padding-top: 1;
+          padding-bottom: 0;
         }
       ''
     ];

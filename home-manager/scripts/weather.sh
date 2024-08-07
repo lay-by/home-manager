@@ -3,22 +3,22 @@
 get_icon() {
     case $1 in
         # Icons for weather-icons
-        01d) icon="	" ;;
-        01n) icon="	" ;;
-        02d) icon="	" ;;
-        02n) icon="	" ;;
-        03*) icon="	" ;;
-        04*) icon="	" ;;
-        09d) icon="	" ;;
-        09n) icon="	" ;;
-        10d) icon="	" ;;
-        10n) icon="	" ;;
-        11d) icon="	" ;;
-        11n) icon="	" ;;
-        13d) icon="	" ;;
-        13n) icon="	" ;;
-        50d) icon="	" ;;
-        50n) icon="	" ;;
+        01d) icon=" " ;;
+        01n) icon=" " ;;
+        02d) icon=" " ;;
+        02n) icon=" " ;;
+        03*) icon=" " ;;
+        04*) icon=" " ;;
+        09d) icon=" " ;;
+        09n) icon=" " ;;
+        10d) icon=" " ;;
+        10n) icon=" " ;;
+        11d) icon=" " ;;
+        11n) icon=" " ;;
+        13d) icon=" " ;;
+        13n) icon=" " ;;
+        50d) icon=" " ;;
+        50n) icon=" " ;;
         *) icon="	" ;;
 
             # Icons for Font Awesome 5 Pro

@@ -6,7 +6,7 @@
     ./hyprland/hyprland.nix
     ./hyprland/hyprlock.nix
     ./desktop/stylix.nix
-    # ./hyprland/dunst.nix
+    ./hyprland/dunst.nix
   ];
 
   nixpkgs = {
@@ -33,7 +33,6 @@
       networkmanagerapplet
       breeze-icons
       konsole
-      spotify
       ark
       desktop-file-utils
       rofi-wayland

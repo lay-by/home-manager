@@ -6,13 +6,16 @@ _: {
         ",preferred,auto,auto, vrr, 1"
         "Unknown-1, disable"
         "DP-1, 1920x1080@120, 3x0, 1, vrr, 1"
-
       ];
 
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
         "HYPRCURSOR_THEME,BreezeX-Dark"
+      ];
+
+      exec-once = [
+        "waybar"
       ];
 
       general = {
@@ -76,7 +79,7 @@ _: {
 
       bind =
         [
-          "$mainMod, Space, exec, rofi -show drun"
+          "$mainMod, Space, exec, wofi --show drun"
           "$Control_L&Alt_L, T, exec, $terminal"
           "$Alt_L, 1, killactive,"
           "$mainMod, M, exit,"
