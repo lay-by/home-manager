@@ -5,7 +5,7 @@ _: {
       monitor = [
         ",preferred,auto,auto, vrr, 1"
         "Unknown-1, disable"
-        "DP-1, 1920x1080@120, 3x0, 1, vrr, 1"
+        "DP-1, 1920x1080@120, 4x0, 1, vrr, 1"
       ];
 
       env = [
