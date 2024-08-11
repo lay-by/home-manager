@@ -1,4 +1,4 @@
-{ pkgs, spicetify-nix, ... }:
+{ pkgs, spicetify-nix, inputs, ... }:
 {
   imports = [
     ./hyprland/waybar.nix
@@ -10,7 +10,11 @@
   ];
 
   nixpkgs = {
-    overlays = [ ];
+    overlays = [
+      (final: prev: {
+        hyprland = inputs.hyprwm.packages.${prev.stdenv.hostPlatform.system}.hyprland;
+      })
+    ];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;

@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#! /usr/bin/env nix-shell
+# shellcheck shell=bash
+#! nix-shell -i bash -p nvidia-smi
 
 get_gpu() {
     TEMP=$(nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits)

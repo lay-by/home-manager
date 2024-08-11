@@ -1,16 +1,4 @@
-{ lib, pkgs, ... }:
-let
-  dropNLines =
-    path: n:
-    let
-      rawContent = builtins.readFile path;
-      lines = builtins.split "\n" rawContent;
-      droppedFirstNLines = pkgs.lib.drop n lines;
-      removedEmptyLines = pkgs.lib.lists.remove "" droppedFirstNLines;
-      finalLines = pkgs.lib.lists.remove [ ] removedEmptyLines;
-    in
-    builtins.concatStringsSep "\n" finalLines;
-in
+{ lib, ... }:
 {
   # Configure & Theme Waybar
   programs.waybar = {
@@ -85,17 +73,17 @@ in
           format = "󰎇 {} 󰎇";
           interval = 1;
           on-click = "playerctl -p spotify play-pause";
-          exec = "/home/hushh/nix-config/home-manager/scripts/music.sh";
+          exec = builtins.readFile ../scripts/music.sh;
         };
         "custom/nvidia" = {
           format = " {}";
           interval = 1;
-          exec = /home/hushh/nix-config/home-manager/scripts/nvidia.sh;
+          exec = builtins.readFile ../scripts/nvidia.sh;
         };
         # There might already be a custom module for this but I'm just going to use my old script.
         "custom/weather" = {
           interval = 900;
-          exec = "/home/hushh/nix-config/home-manager/scripts/weather.sh";
+          exec = builtins.readFile ../scripts/weather.sh;
         };
       }
     ];

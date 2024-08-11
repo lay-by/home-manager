@@ -1,4 +1,6 @@
-#!/bin/sh
+#! /usr/bin/env nix-shell
+# shellcheck shell=bash
+#! nix-shell -i bash -p jq curl
 
 get_icon() {
     case $1 in

@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#! /usr/bin/env nix-shell
+# shellcheck shell=bash
+#! nix-shell -i bash -p playerctl spotify
 
 players="spotify|rhythmbox"
 #pctl=$(playerctl -a metadata)
