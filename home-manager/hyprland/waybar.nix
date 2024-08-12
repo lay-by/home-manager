@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, ... }:
 {
   # Configure & Theme Waybar
   programs.waybar = {
@@ -73,22 +73,22 @@
           format = "󰎇 {} 󰎇";
           interval = 1;
           on-click = "playerctl -p spotify play-pause";
-          exec = builtins.readFile ../scripts/music.sh;
+          exec = pkgs.lib.getExe (pkgs.lib.writeScriptBin (builtins.readFile ../scripts/music.sh));
         };
         "custom/nvidia" = {
           format = " {}";
           interval = 1;
-          exec = builtins.readFile ../scripts/nvidia.sh;
+          exec = pkgs.lib.getExe (pkgs.writeScriptBin (builtins.readFile ../scripts/nvidia.sh));
         };
         # There might already be a custom module for this but I'm just going to use my old script.
         "custom/weather" = {
           interval = 900;
-          exec = builtins.readFile ../scripts/weather.sh;
+          exec = pkgs.lib.getExe (pkgs.writeScriptBin (builtins.readFile ../scripts/weather.sh));
         };
       }
     ];
 
-    style = lib.concatStrings [
+    style = pkgs.lib.concatStrings [
       ''
         * {
           font-family: Iosevka Nerd Font Mono;
