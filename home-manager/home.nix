@@ -10,11 +10,6 @@
   ];
 
   nixpkgs = {
-    overlays = [
-      (final: prev: {
-        hyprland = inputs.hyprwm.packages.${prev.stdenv.hostPlatform.system}.hyprland;
-      })
-    ];
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
@@ -54,6 +49,8 @@
       gwe
       libnvidia-container
       lutris
+      wine
+      winetricks
 
       # Development
       neovim
@@ -70,6 +67,7 @@
       slurp
       kdenlive
       playerctl
+      yt-dlp
 
       # Theme stuff
       papirus-folders
@@ -84,7 +82,7 @@
       enable = true;
       userEmail = "44959695+lay-by@users.noreply.github.com";
       userName = "lay-by";
-      delta.enable = true;
+      #delta.enable = true; #failing to compile for some reason (missing sqlite?)
     };
     gh = {
       enable = true;
@@ -110,10 +108,6 @@
       };
   };
   fonts.fontconfig.enable = true;
-
-  home.pointerCursor = {
-  
-  }
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

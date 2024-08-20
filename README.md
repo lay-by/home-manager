@@ -8,6 +8,7 @@ TODO:
 - mute bind for discord (include sound cue?)
 - get titanfall 2 and/or gamescope working correctly
 - configure fish
+- stylix configuration for spicetify
 
 - replace hyprlock
 - minor graphical glitches
