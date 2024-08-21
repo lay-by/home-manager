@@ -1,12 +1,12 @@
-{ pkgs, spicetify-nix, inputs, ... }:
+{ pkgs, spicetify-nix, inputs, config, lib, ... }:
 {
   imports = [
     ./hyprland/waybar.nix
     ./hyprland/hypridle.nix
     ./hyprland/hyprland.nix
-    ./hyprland/hyprlock.nix
-    ./desktop/stylix.nix
+    ./hyprland/hyprlock.nix    
     ./hyprland/dunst.nix
+    ./desktop/stylix.nix 
   ];
 
   nixpkgs = {
@@ -30,7 +30,6 @@
       vesktop
       dolphin
       networkmanagerapplet
-      breeze-icons
       konsole
       ark
       desktop-file-utils
@@ -41,6 +40,8 @@
       hyprcursor
       htop
       mpv
+      alacritty
+      gwenview
 
       # Gaming
       gpu-screen-recorder
@@ -53,8 +54,6 @@
       winetricks
 
       # Development
-      neovim
-      vscode
       gnumake
       nixfmt-rfc-style
       meson
@@ -84,10 +83,12 @@
       userName = "lay-by";
       #delta.enable = true; #failing to compile for some reason (missing sqlite?)
     };
+
     gh = {
       enable = true;
       gitCredentialHelper.enable = true;
     };
+
     spicetify =
       let
         spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
@@ -106,6 +107,15 @@
             ;
         };
       };
+
+    vscode.enable = true;
+    neovim.enable = true;
+    alacritty = {
+      enable = true;
+      settings = {
+        font.size = lib.mkForce 10;
+      };
+    };
   };
   fonts.fontconfig.enable = true;
 
