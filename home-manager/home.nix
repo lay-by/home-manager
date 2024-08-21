@@ -1,12 +1,20 @@
-{ pkgs, spicetify-nix, inputs, config, lib, ... }:
+{
+  pkgs,
+  spicetify-nix,
+  inputs,
+  config,
+  lib,
+  ...
+}:
 {
   imports = [
     ./hyprland/waybar.nix
     ./hyprland/hypridle.nix
     ./hyprland/hyprland.nix
-    ./hyprland/hyprlock.nix    
+    ./hyprland/hyprlock.nix
     ./hyprland/dunst.nix
-    ./desktop/stylix.nix 
+    ./desktop/stylix.nix
+    ./desktop/firefox.nix
   ];
 
   nixpkgs = {
@@ -30,7 +38,6 @@
       vesktop
       dolphin
       networkmanagerapplet
-      konsole
       ark
       desktop-file-utils
       unzip
@@ -67,12 +74,8 @@
       kdenlive
       playerctl
       yt-dlp
-
-      # Theme stuff
-      papirus-folders
+      neofetch
       ;
-
-    inherit (pkgs.kdePackages) breeze;
   };
 
   programs = {
@@ -100,7 +103,6 @@
             adblock # NO❗❗❗ 🙀 😾 HOW WILL SPOTIFY MAKE MONEY FROM THEIR AI-GENERATED SONGS AND KEEP ALL THE PROFITS FOR THEMSELVES?! *(Allegedly)*
             beautifulLyrics # Apple Music like Lyrics
             copyLyrics
-            #fullAppDisplay # Shows the song cover, title, and artist in fullscreen.
             fullAlbumDate
             popupLyrics # Popup window with the current song's lyrics scrolling across it
             shuffle # Shuffle properly, using Fisher-Yates with zero bias

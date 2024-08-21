@@ -62,6 +62,8 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Fix pipewire crackling
+  security.rtkit.enable = true;
 
   networking.hostName = "blind-faith";
 

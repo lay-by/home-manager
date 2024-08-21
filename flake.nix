@@ -19,7 +19,6 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";  
-
   };
 
   outputs =
@@ -30,6 +29,7 @@
       stylix,
       apple-fonts,
       spicetify-nix,
+      nur,
       ...
     }@inputs:
     let
@@ -42,7 +42,10 @@
           specialArgs = {
             inherit inputs outputs apple-fonts;
           };
-          modules = [ ./nixos/configuration.nix ];
+          modules = [
+            inputs.nur.nixosModules.nur
+            ./nixos/configuration.nix 
+          ];
         };
       };
 

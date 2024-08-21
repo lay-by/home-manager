@@ -10,8 +10,6 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
-
-    gamescope.enable = true;
     hyprland = { 
       enable = true;
       #package = inputs.hyprwm.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

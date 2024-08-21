@@ -7,7 +7,7 @@
     autoEnable = true;
 
     image = /home/hushh/Pictures/papes/mountain.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark-terminal.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
 
     cursor = {
       package = pkgs.kdePackages.breeze;

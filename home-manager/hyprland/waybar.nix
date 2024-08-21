@@ -11,7 +11,6 @@ in {
         position = "top";
         modules-center = [ "custom/music" ];
         modules-left = [
-          "custom/startmenu"
           "hyprland/workspaces"
           "custom/weather"
         ];
