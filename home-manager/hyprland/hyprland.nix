@@ -20,7 +20,7 @@ _: {
 
       general = {
         gaps_in = 1;
-        gaps_out = 1;
+        gaps_out = 2;
         border_size = 1;
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
