@@ -13,7 +13,7 @@
         height = 150;
         origin = "bottom-right";
         offset = "10x10";
-        transparency = 80;
+        transparency = 70;
         frame_width = 1;
         corner_radius = 5;
       };      

@@ -15,6 +15,7 @@
     ./hyprland/dunst.nix
     ./desktop/stylix.nix
     ./desktop/firefox.nix
+    ./hyprland/wofi.nix
   ];
 
   nixpkgs = {
@@ -41,7 +42,7 @@
       ark
       desktop-file-utils
       unzip
-      element-desktop
+      #element-desktop
       gimp
       hyprshot
       hyprcursor
@@ -76,6 +77,7 @@
       yt-dlp
       neofetch
       ;
+    inherit (pkgs.kdePackages) kalgebra;
   };
 
   programs = {

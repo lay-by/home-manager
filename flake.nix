@@ -18,7 +18,7 @@
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";  
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -43,8 +43,13 @@
             inherit inputs outputs apple-fonts;
           };
           modules = [
-            inputs.nur.nixosModules.nur
             ./nixos/configuration.nix 
+            nur.nixosModules.nur       
+            { nixpkgs.overlays = [ nur.overlay ]; }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+            }
           ];
         };
       };
@@ -59,6 +64,8 @@
             ./home-manager/home.nix
             stylix.homeManagerModules.stylix
             spicetify-nix.homeManagerModules.default
+            nur.nixosModules.nur       
+            { nixpkgs.overlays = [ nur.overlay ]; }
           ];
         };
       };

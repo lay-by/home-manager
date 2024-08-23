@@ -8,12 +8,10 @@
       libsecret
 
       # Desktop
-      wofi
       wayland-protocols
       wayland-utils
       wl-clipboard
       wlroots
-      dunst
 
       # Development
       meson
