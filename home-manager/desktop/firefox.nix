@@ -17,6 +17,7 @@
           decentraleyes
           clearurls
           canvasblocker
+          ublacklist
           ;
       };
     };

@@ -44,7 +44,7 @@ get_icon() {
 }
 
 KEY="a78c793d7f2431574ca9c5f56e74fc9b"
-CITY="4718711"
+CITY="4701458"
 UNITS="imperial"
 SYMBOL="°"
 

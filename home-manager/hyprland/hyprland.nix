@@ -3,9 +3,9 @@ _: {
     enable = true;
     settings = {
       monitor = [
-        ",preferred,auto,auto, vrr, 1"
+        ",preferred,auto,auto, vrr, 0"
         "Unknown-1, disable"
-        "DP-1, 1920x1080@120, 4x0, 1, vrr, 1"
+        "DP-1, 1920x1080@120, 4x0, 1, vrr, 0"
       ];
 
       env = [
@@ -17,6 +17,7 @@ _: {
       exec-once = [
         "waybar"
         "hyprctl setcursor BreezeX-Dark 24"
+        "easyeffects -w"
       ];
 
       general = {
@@ -158,8 +159,16 @@ _: {
         follow_mouse = 2;
       };
 
+      misc = {
+        vfr = false;
+      };
+
+      cursor = {
+        no_hardware_cursors = 1;
+      };
+
       #windowrule = "noblur 0, class:.*";
-      #layerrule = "blur, class:.*";
+      #layerrule = "blur, class:.*";z
 
     };
   };

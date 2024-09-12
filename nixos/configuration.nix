@@ -106,11 +106,15 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     LIBVA_DRIVER_NAME = "nvidia";
     XDG_SESSION_TYPE = "wayland";
-    GBM_BACKEND = "nvidia-drm";
+    #GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     NVD_BACKEND = "direct";
     WLR_DRM_NO_ATOMIC = "1";
     NIXOS_OZONE_WL = "1";
+    TERMINAL = "alacritty";
+    EDITOR = "nvim";
+    TERM = "alacritty";
+    __GL_VRR_ALLOWED = "0";
   };
 
   # Ugly hack to fix a bug in egl-wayland, see

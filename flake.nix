@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:NixOS/nixpkgs/b79ce4c43f9117b2912e7dbc68ccae4539259dda";
     nur.url = "github:nix-community/NUR";
 
     # Home manager
@@ -39,9 +40,7 @@
     {
       nixosConfigurations = {
         blind-faith = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs apple-fonts;
-          };
+          specialArgs = { inherit inputs outputs apple-fonts };
           modules = [
             ./nixos/configuration.nix 
             nur.nixosModules.nur       
@@ -49,25 +48,49 @@
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
+              home-manager.users.hushh = {
+                imports = [
+                  ./home-manager/home.nix
+                  stylix.homeManagerModules.stylix
+                  spicetify-nix.homeManagerModules.default
+                ];
+              };
             }
           ];
         };
       };
 
-      homeConfigurations = {
-        "hushh@blind-faith" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs spicetify-nix;
-          };
-          modules = [
-            ./home-manager/home.nix
-            stylix.homeManagerModules.stylix
-            spicetify-nix.homeManagerModules.default
-            nur.nixosModules.nur       
-            { nixpkgs.overlays = [ nur.overlay ]; }
-          ];
-        };
-      };
+      #nixosConfigurations = {
+      #  blind-faith = nixpkgs.lib.nixosSystem {
+      #    specialArgs = {
+      #      inherit inputs outputs apple-fonts;
+      #    };
+      #    modules = [
+      #      ./nixos/configuration.nix 
+      #      nur.nixosModules.nur       
+      #      { nixpkgs.overlays = [ nur.overlay ]; }
+      #      home-manager.nixosModules.home-manager
+      #      {
+      #        home-manager.useGlobalPkgs = true;
+      #      }
+      #    ];
+      #  };
+      #};
+#
+      #homeConfigurations = {
+      #  "hushh@blind-faith" = home-manager.lib.homeManagerConfiguration {
+      #    pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      #    extraSpecialArgs = {
+      #      inherit inputs outputs spicetify-nix;
+      #    };
+      #    modules = [
+      #      ./home-manager/home.nix
+      #      stylix.homeManagerModules.stylix
+      #      spicetify-nix.homeManagerModules.default
+      #      nur.nixosModules.nur       
+      #      { nixpkgs.overlays = [ nur.overlay ]; }
+      #    ];
+      #  };
+      #};
     };
 }

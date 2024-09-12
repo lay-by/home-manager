@@ -30,12 +30,13 @@
     device = "/dev/disk/by-uuid/6d60675c-ebe6-4f7f-b9bc-be9cdc748c90";
     fsType = "btrfs";
   };
-  
-  swapDevices = [ {
-    device = "/var/lib/swapfile";
-    size = 16*1024;
-    randomEncryption.enable = true; 
-  } ];
+
+  # For some reason this piece of shit makes my pc freeze at high ram utilization.   
+  #swapDevices = [ {
+  #  device = "/var/lib/swapfile";
+  #  size = 16*1024;
+  #  randomEncryption.enable = true; 
+  #} ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

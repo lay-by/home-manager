@@ -12,10 +12,10 @@
     ./hyprland/hypridle.nix
     ./hyprland/hyprland.nix
     ./hyprland/hyprlock.nix
+    ./hyprland/wofi.nix
     ./hyprland/dunst.nix
     ./desktop/stylix.nix
     ./desktop/firefox.nix
-    ./hyprland/wofi.nix
   ];
 
   nixpkgs = {
@@ -55,11 +55,11 @@
       gpu-screen-recorder
       gpu-screen-recorder-gtk
       protontricks
-      gwe
       libnvidia-container
       lutris
       wine
       winetricks
+      r2modman
 
       # Development
       gnumake
@@ -67,6 +67,10 @@
       meson
       cmake
       font-manager
+      nim 
+      nimble
+      nimlsp
+      nimlangserver
 
       # Misc productivity
       grim
@@ -76,6 +80,12 @@
       playerctl
       yt-dlp
       neofetch
+      nitch
+      thunderbird
+      libreoffice
+
+      #security
+      nmap
       ;
     inherit (pkgs.kdePackages) kalgebra;
   };
@@ -120,8 +130,17 @@
         font.size = lib.mkForce 10;
       };
     };
+
+    
   };
   fonts.fontconfig.enable = true;
+  services.easyeffects.enable = true;
+
+  home.sessionVariables = {
+    EDITOR="nvim";
+    TERMINAL="alacritty";
+    TERM="alacritty";
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
