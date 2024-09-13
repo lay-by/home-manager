@@ -40,7 +40,7 @@
     {
       nixosConfigurations = {
         blind-faith = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs apple-fonts };
+          specialArgs = { inherit inputs outputs apple-fonts; };
           modules = [
             ./nixos/configuration.nix 
             nur.nixosModules.nur       
@@ -54,6 +54,9 @@
                   stylix.homeManagerModules.stylix
                   spicetify-nix.homeManagerModules.default
                 ];
+              };
+              home-manager.extraSpecialArgs = {
+                inherit inputs outputs spicetify-nix;
               };
             }
           ];
