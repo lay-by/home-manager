@@ -1,6 +1,5 @@
 {
   pkgs,
-  spicetify-nix,
   inputs,
   config,
   lib,
@@ -42,7 +41,7 @@
       ark
       desktop-file-utils
       unzip
-      #element-desktop
+      element-desktop
       gimp
       hyprshot
       hyprcursor
@@ -106,7 +105,7 @@
 
     spicetify =
       let
-        spicePkgs = spicetify-nix.legacyPackages.${pkgs.system};
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
       in
       {
         enable = true;

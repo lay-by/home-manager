@@ -7,13 +7,6 @@
 }:
 
 {
-  # Fix temporary failing opencv build. 
-  nixpkgs.overlays = [
-    (self: super: {
-      cudaPackages = super.cudaPackages_12_3;
-    })
-  ];
-
   imports = [
     ./fonts.nix
     ./hardware-configuration.nix

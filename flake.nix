@@ -17,83 +17,39 @@
 
     # Apple Fonts
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    #apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      stylix,
-      apple-fonts,
-      spicetify-nix,
-      nur,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-      inherit apple-fonts;
-    in
-    {
-      nixosConfigurations = {
-        blind-faith = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs apple-fonts; };
-          modules = [
-            ./nixos/configuration.nix 
-            nur.nixosModules.nur       
-            { nixpkgs.overlays = [ nur.overlay ]; }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.users.hushh = {
-                imports = [
-                  ./home-manager/home.nix
-                  stylix.homeManagerModules.stylix
-                  spicetify-nix.homeManagerModules.default
-                ];
-              };
-              home-manager.extraSpecialArgs = {
-                inherit inputs outputs spicetify-nix;
-              };
-            }
-          ];
-        };
+  outputs = inputs: {
+    nixosConfigurations = {
+      blind-faith = inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos/configuration.nix
+          inputs.nur.nixosModules.nur
+          { nixpkgs.overlays = [ inputs.nur.overlay ]; }
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.hushh = {
+              imports = [
+                ./home-manager/home.nix
+                inputs.stylix.homeManagerModules.stylix
+                inputs.spicetify-nix.homeManagerModules.default
+              ];
+            };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+            };
+          }
+        ];
       };
-
-      #nixosConfigurations = {
-      #  blind-faith = nixpkgs.lib.nixosSystem {
-      #    specialArgs = {
-      #      inherit inputs outputs apple-fonts;
-      #    };
-      #    modules = [
-      #      ./nixos/configuration.nix 
-      #      nur.nixosModules.nur       
-      #      { nixpkgs.overlays = [ nur.overlay ]; }
-      #      home-manager.nixosModules.home-manager
-      #      {
-      #        home-manager.useGlobalPkgs = true;
-      #      }
-      #    ];
-      #  };
-      #};
-#
-      #homeConfigurations = {
-      #  "hushh@blind-faith" = home-manager.lib.homeManagerConfiguration {
-      #    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      #    extraSpecialArgs = {
-      #      inherit inputs outputs spicetify-nix;
-      #    };
-      #    modules = [
-      #      ./home-manager/home.nix
-      #      stylix.homeManagerModules.stylix
-      #      spicetify-nix.homeManagerModules.default
-      #      nur.nixosModules.nur       
-      #      { nixpkgs.overlays = [ nur.overlay ]; }
-      #    ];
-      #  };
-      #};
     };
+  };
 }

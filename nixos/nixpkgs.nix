@@ -3,7 +3,8 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      cudaSupport = true;
+      # causing opencv to fail build
+      #cudaSupport = true;
       packageOverrides = pkgs: {
         steam = pkgs.steam.override {
           # The extraPkgs attribute expects a function that takes a package set (p)
