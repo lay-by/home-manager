@@ -18,6 +18,7 @@ _: {
         "waybar"
         "hyprctl setcursor BreezeX-Dark 24"
         "easyeffects -w"
+        "wlsunset -S 9:00 -s 21:00"
       ];
 
       general = {
@@ -153,6 +154,7 @@ _: {
         "immediate, class:^(Titanfall2.exe)$"
         "immediate, class:^(helldivers2.exe)$"
         "immediate, class:^(cs2)$"
+        "immediate, class:^(*.exe)$"
       ];
       
       input = {

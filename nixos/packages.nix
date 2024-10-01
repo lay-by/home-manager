@@ -6,6 +6,7 @@
       wget
       git
       libsecret
+      ffmpeg
 
       # Desktop
       wayland-protocols

@@ -1,7 +1,24 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 {
+  imports = [
+    {
+      options = {
+        programs.firefox.platforms.linux.vendorPath = mkOption {
+          type = types.str;
+          default = ".mozilla";
+          description = "Path to the vendor directory for Firefox on Linux.";
+        };
+      };
+
+      config = {
+        programs.firefox.platforms.linux.vendorPath = ".zen";
+      };
+    }
+  ];
+
   programs.firefox = {
     enable = true;
+    package = inputs.zen-browser.packages.x86_64-linux.zen-browser;
     profiles.main = {
       isDefault = true;
       extensions = builtins.attrValues {

@@ -14,14 +14,14 @@
     ./hyprland/wofi.nix
     ./hyprland/dunst.nix
     ./desktop/stylix.nix
-    ./desktop/firefox.nix
+    #./desktop/firefox.nix
   ];
 
   nixpkgs = {
     config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
-      #cudaSupport = true;
+      cudaSupport = true;
     };
   };
 
@@ -33,7 +33,6 @@
   home.packages = builtins.attrValues {
     inherit (pkgs)
       # Base apps    
-      firefox
       pavucontrol
       vesktop
       dolphin
@@ -42,7 +41,6 @@
       desktop-file-utils
       unzip
       element-desktop
-      gimp
       hyprshot
       hyprcursor
       htop
@@ -66,27 +64,42 @@
       meson
       cmake
       font-manager
-      nim 
+      # nim
+      nim
       nimble
       nimlsp
       nimlangserver
+      nil
+      devenv
 
       # Misc productivity
       grim
       swappy
       slurp
-      kdenlive
-      playerctl
-      yt-dlp
       neofetch
       nitch
-      thunderbird
+      betterbird
       libreoffice
+      p7zip
+      _7zz
+      file
+      wlsunset
+      killall
 
-      #security
+      # Media
+      davinci-resolve
+      blender
+      playerctl
+      yt-dlp
+      kdenlive
+      imagemagick
+      gimp
+      evince
+
+      # Security
       nmap
       ;
-    inherit (pkgs.kdePackages) kalgebra;
+    inherit (pkgs.kdePackages) kalgebra kcalc;
   };
 
   programs = {
@@ -95,7 +108,7 @@
       enable = true;
       userEmail = "44959695+lay-by@users.noreply.github.com";
       userName = "lay-by";
-      #delta.enable = true; #failing to compile for some reason (missing sqlite?)
+      delta.enable = true; # failing to compile for some reason (missing sqlite?)
     };
 
     gh = {
@@ -129,16 +142,21 @@
         font.size = lib.mkForce 10;
       };
     };
-
-    
+    direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+    fish.enable = true;
   };
   fonts.fontconfig.enable = true;
   services.easyeffects.enable = true;
 
   home.sessionVariables = {
-    EDITOR="nvim";
-    TERMINAL="alacritty";
-    TERM="alacritty";
+    EDITOR = "nvim";
+    TERMINAL = "alacritty";
+    TERM = "alacritty";
+    DEFAULT_BROWSER = "${inputs.zen-browser.packages.x86_64-linux.zen-browser}/bin/zen";
   };
 
   # Nicely reload system units when changing configs
