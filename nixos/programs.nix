@@ -5,10 +5,15 @@
       enable = true;
       plugins = builtins.attrValues { inherit (pkgs.xfce) thunar-archive-plugin thunar-volman; };
     };
+    gamescope = {
+        enable = true;
+        #capSysNice = true;
+    };
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
+      gamescopeSession.enable = true; 
     };
     hyprland.enable = true;
 
@@ -41,5 +46,7 @@
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "/home/user/nix-config";
     };
+
+    wireshark.enable = true;
   };
 }

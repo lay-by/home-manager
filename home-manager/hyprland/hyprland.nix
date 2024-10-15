@@ -3,9 +3,9 @@ _: {
     enable = true;
     settings = {
       monitor = [
-        ",preferred,auto,auto, vrr, 0"
+        ",preferred,auto,auto, vrr, 1"
         "Unknown-1, disable"
-        "DP-1, 1920x1080@120, 4x0, 1, vrr, 0"
+        "DP-1, 1920x1080@120, 4x0, 1, vrr, 1"
       ];
 
       env = [
@@ -161,9 +161,9 @@ _: {
         follow_mouse = 2;
       };
 
-      misc = {
-        vfr = false;
-      };
+      #misc = {
+      #  vfr = false;
+      #};
 
       cursor = {
         no_hardware_cursors = 1;

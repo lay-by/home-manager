@@ -27,6 +27,13 @@
       breeze-icons
       gnome-tweaks
       ssh-askpass-fullscreen
+
+      # QEMU
+      qemu
+      quickemu
+
+      #security
+      wireshark
       ;
 
     #zen-browser = pkgs.zen-browser.packages.x86_64-linux.zen-browser;

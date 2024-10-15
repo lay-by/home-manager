@@ -17,7 +17,7 @@
 
     # Apple Fonts
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-    #apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
+    apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -43,7 +43,7 @@
                 inputs.stylix.homeManagerModules.stylix
                 inputs.spicetify-nix.homeManagerModules.default
               ];
-            };
+            };  
             home-manager.extraSpecialArgs = {
               inherit inputs;
             };

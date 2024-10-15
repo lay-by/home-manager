@@ -17,14 +17,6 @@
     #./desktop/firefox.nix
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-      cudaSupport = true;
-    };
-  };
-
   home = {
     username = "hushh";
     homeDirectory = "/home/hushh";
@@ -46,7 +38,6 @@
       htop
       mpv
       alacritty
-      gwenview
 
       # Gaming
       gpu-screen-recorder
@@ -57,6 +48,7 @@
       wine
       winetricks
       r2modman
+      prismlauncher
 
       # Development
       gnumake
@@ -95,15 +87,18 @@
       imagemagick
       gimp
       evince
+      eog
 
       # Security
       nmap
+      ghidra
       ;
     inherit (pkgs.kdePackages) kalgebra kcalc;
   };
 
   programs = {
     home-manager.enable = true;
+    
     git = {
       enable = true;
       userEmail = "44959695+lay-by@users.noreply.github.com";
@@ -141,11 +136,6 @@
       settings = {
         font.size = lib.mkForce 10;
       };
-    };
-    direnv = {
-      enable = true;
-      enableBashIntegration = true; # see note on other shells below
-      nix-direnv.enable = true;
     };
     fish.enable = true;
   };

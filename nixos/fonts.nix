@@ -18,11 +18,14 @@
         sarasa-gothic
         twemoji-color-font
         victor-mono
+        vegur
         ;
-      sf-pro-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
-      sf-compact-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-compact-nerd;
-      sf-mono-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd;
-      ny-nerd = inputs.apple-fonts.packages.${pkgs.system}.ny-nerd;
+      
+      # These make builds a pain
+      #sf-pro-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
+      #sf-compact-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-compact-nerd;
+      #sf-mono-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd;
+      #ny-nerd = inputs.apple-fonts.packages.${pkgs.system}.ny-nerd;
       nerdfonts = pkgs.nerdfonts.override {
         fonts = [
           "FiraCode"
@@ -44,11 +47,11 @@
           "Noto Color Emoji"
         ];
         sansSerif = [
-          "SFProDisplay Nerd Font"
+          "Vegur"
           "Noto Color Emoji"
         ];
         serif = [
-          "NY Nerd Font"
+          "Vegur"
           "Noto Color Emoji"
         ];
         emoji = [ "Twitter Color Emoji" ];

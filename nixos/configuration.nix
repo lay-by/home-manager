@@ -64,6 +64,7 @@
     };
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # Fix pipewire crackling
   security.rtkit.enable = true;
@@ -96,6 +97,7 @@
       "input"
       "disk"
       "libvirtd"
+      "wireshark"
     ];
   };
 
@@ -115,6 +117,7 @@
     EDITOR = "nvim";
     TERM = "alacritty";
     __GL_VRR_ALLOWED = "0";
+    SSLKEYLOGFILE="/home/hushh/SSLKEYLOGFILE";
   };
 
   # Ugly hack to fix a bug in egl-wayland, see
