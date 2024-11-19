@@ -21,7 +21,7 @@
       };
       extraPackages32 = lib.attrValues { inherit (pkgs.driversi686Linux) mesa; };
     };
-
+    
     nvidia = {
       open = true;
       modesetting.enable = true;

@@ -24,6 +24,9 @@
 
     zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "github:hyprwm/Hyprland";
+    
   };
 
   outputs = inputs: {

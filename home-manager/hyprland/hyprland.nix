@@ -42,7 +42,7 @@ _: {
         active_opacity = 0.8;
         inactive_opacity = 0.8;
 
-        drop_shadow = true;
+        #drop_shadow = true;
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
         blur = {
@@ -82,7 +82,7 @@ _: {
 
       bind =
         [
-          "$mainMod, Space, exec, wofi --show drun --allow-images"
+          "$mainMod, Space, exec, rofi -show drun "
           "$Control_L&Alt_L, T, exec, $terminal"
           "$Alt_L, 1, killactive,"
           "$mainMod, M, exit,"
@@ -153,10 +153,15 @@ _: {
         "suppressevent maximize, class:.*"
         "immediate, class:^(Titanfall2.exe)$"
         "immediate, class:^(helldivers2.exe)$"
-        "immediate, class:^(cs2)$"
+        #"immediate, class:^(cs2)$"
+        "fullscreenstate 2 0, class:^(cs2)$"
         "immediate, class:^(*.exe)$"
       ];
-      
+
+      layerrule = [
+        "blur,waybar"
+      ];
+
       input = {
         follow_mouse = 2;
       };

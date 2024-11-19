@@ -11,6 +11,9 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "nvidia_drm.fbdev=1"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6dfafd15-d95c-4d36-9c8e-78d6cde948d4";

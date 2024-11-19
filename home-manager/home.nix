@@ -70,35 +70,39 @@
       slurp
       neofetch
       nitch
-      betterbird
+      thunderbird
       libreoffice
       p7zip
-      _7zz
+      #_7zz
       file
       wlsunset
       killall
+      okular
 
       # Media
-      davinci-resolve
-      blender
+      #davinci-resolve
+      #blender
       playerctl
       yt-dlp
-      kdenlive
+      #kdenlive
       imagemagick
       gimp
       evince
-      eog
+      alsa-utils
+      discord
+      #audacity
 
       # Security
       nmap
       ghidra
       ;
     inherit (pkgs.kdePackages) kalgebra kcalc;
+    inherit (pkgs.jetbrains) webstorm rider;
   };
 
   programs = {
     home-manager.enable = true;
-    
+
     git = {
       enable = true;
       userEmail = "44959695+lay-by@users.noreply.github.com";
@@ -138,6 +142,17 @@
       };
     };
     fish.enable = true;
+
+    #Fuckery to get around Titanfall 2's FPS cap. 
+    mangohud = {
+      enable = true;
+      settings = {
+        fps_limit = 180;
+        no_display = true;
+      };
+    };
+
+    #gpu-screen-recorder.enable = true;
   };
   fonts.fontconfig.enable = true;
   services.easyeffects.enable = true;
@@ -149,6 +164,7 @@
     DEFAULT_BROWSER = "${inputs.zen-browser.packages.x86_64-linux.zen-browser}/bin/zen";
   };
 
+  xsession.numlock.enable = true;
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

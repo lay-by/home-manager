@@ -6,7 +6,9 @@
     polarity = "dark";
     autoEnable = true;
 
-    image = /home/hushh/Pictures/papes/astronaut.jpg;
+    targets.hyprlock.enable = false;
+
+    image = /home/hushh/Pictures/papes/tokyo5.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
 
     cursor = {

@@ -29,6 +29,7 @@
         # Workaround for https://github.com/NixOS/nix/issues/9574
         nix-path = config.nix.nixPath;
 
+
         trusted-substituters = [
         "https://devenv.cachix.org"
         "https://nix-community.cachix.org"
@@ -63,11 +64,22 @@
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
     };
 
+  nixpkgs.config.allowUnfree = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # Fix pipewire crackling
   security.rtkit.enable = true;
+  security.polkit.enable = true;
+
+  # Fix gpu-screen-recorder auth
+  #security.wrappers.gsr-kms-server = {
+  #  owner = "root";
+  #  group = "root";
+  #  capabilities = "cap_sys_admin+ep";
+  #  source = "${pkgs.gpu-screen-recorder}/bin/gsr-kms-server";
+  #};
 
   networking.hostName = "blind-faith";
 
@@ -117,7 +129,6 @@
     EDITOR = "nvim";
     TERM = "alacritty";
     __GL_VRR_ALLOWED = "0";
-    SSLKEYLOGFILE="/home/hushh/SSLKEYLOGFILE";
   };
 
   # Ugly hack to fix a bug in egl-wayland, see
@@ -154,7 +165,7 @@
     wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
     ];
   };
 

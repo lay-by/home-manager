@@ -32,8 +32,12 @@
       qemu
       quickemu
 
-      #security
+      # Security
       wireshark
+
+      # Recording
+      gpu-screen-recorder
+      gpu-screen-recorder-gtk
       ;
 
     #zen-browser = pkgs.zen-browser.packages.x86_64-linux.zen-browser;
