@@ -31,6 +31,7 @@
       # QEMU
       qemu
       quickemu
+      virt-manager
 
       # Security
       wireshark
@@ -38,6 +39,7 @@
       # Recording
       gpu-screen-recorder
       gpu-screen-recorder-gtk
+
       ;
 
     #zen-browser = pkgs.zen-browser.packages.x86_64-linux.zen-browser;
@@ -45,6 +47,7 @@
     inherit (pkgs.kdePackages) breeze;
     inherit (pkgs.libsForQt5) kdeconnect-kde plasma-systemmonitor;
     inherit (pkgs) seahorse breeze-gtk;
-    inherit (inputs.zen-browser.packages.x86_64-linux) zen-browser;
+    inherit (inputs.zen-browser.packages.x86_64-linux) generic;
+    #inherit (inputs.zen-browser.packages.x86_64-linux) zen-browser;
   };
 }

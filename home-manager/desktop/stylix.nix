@@ -7,8 +7,9 @@
     autoEnable = true;
 
     targets.hyprlock.enable = false;
+    #targets.hyprpaper.enable = false;
 
-    image = /home/hushh/Pictures/papes/tokyo5.jpg;
+    image = /home/hushh/Pictures/papes/city.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-dark.yaml";
 
     cursor = {

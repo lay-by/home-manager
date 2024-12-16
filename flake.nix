@@ -16,17 +16,18 @@
     base16.url = "github:SenchoPens/base16.nix";
 
     # Apple Fonts
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-    apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
+    #apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    #apple-fonts.inputs.nixpkgs.follows = "nixpkgs";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    zen-browser.url = "github:heywoodlh/flakes/main?dir=zen-browser";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "github:hyprwm/Hyprland";
-    
+
+    ucodenix.url = "github:e-tho/ucodenix";    
   };
 
   outputs = inputs: {

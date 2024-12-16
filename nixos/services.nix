@@ -1,4 +1,6 @@
-_: {
+{inputs, ...}: 
+{
+  imports = [ inputs.ucodenix.nixosModules.default ];
   services = {
     # Graphics
     xserver = {
@@ -26,6 +28,12 @@ _: {
     };
 
     xserver.videoDrivers = [ "nvidia" ];
+
+    #keep AMD microcode up to date
+    ucodenix = {
+      enable = true;
+      cpuModelId = "00800F11";
+    };
 
     # Audio
     pipewire = {
@@ -56,5 +64,9 @@ _: {
     tumbler.enable = true;
     dbus.enable = true;
     gnome.gnome-keyring.enable = true;
+    # Necessary for piper
+    ratbagd.enable = true;
+
+    blueman.enable = true;
   };
 }

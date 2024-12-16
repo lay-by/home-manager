@@ -57,5 +57,7 @@
     partition-manager.enable = true;
 
     gpu-screen-recorder.enable = true;
+
+    virt-manager.enable = true;
   };
 }

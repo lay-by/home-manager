@@ -40,8 +40,6 @@
       alacritty
 
       # Gaming
-      gpu-screen-recorder
-      gpu-screen-recorder-gtk
       protontricks
       libnvidia-container
       lutris
@@ -78,6 +76,11 @@
       wlsunset
       killall
       okular
+      piper
+      wev
+      
+      #job123
+      teams-for-linux
 
       # Media
       #davinci-resolve
@@ -89,8 +92,6 @@
       gimp
       evince
       alsa-utils
-      discord
-      #audacity
 
       # Security
       nmap
@@ -147,21 +148,34 @@
     mangohud = {
       enable = true;
       settings = {
-        fps_limit = 180;
+        fps_limit = 200;
         no_display = true;
       };
     };
-
-    #gpu-screen-recorder.enable = true;
   };
   fonts.fontconfig.enable = true;
   services.easyeffects.enable = true;
+
+  #services.hyprpaper = {
+  #  enable = true;
+  #  settings = {
+  #    ipc = "on";
+  #    preload = [
+  #      "/home/hushh/Pictures/papes/mountain_uw.jpg"
+  #      "/home/hushh/Pictures/papes/tokyo5.jpg"
+  #    ];
+  #    wallpaper = [
+  #      "DP-1,/home/hushh/Pictures/papes/mountain_uw.jpg"
+  #      "HDMI-A-1,/home/hushh/Pictures/papes/mountain_uw.jpg/tokyo5.jpg"
+  #    ];
+  #  };
+  #};
 
   home.sessionVariables = {
     EDITOR = "nvim";
     TERMINAL = "alacritty";
     TERM = "alacritty";
-    DEFAULT_BROWSER = "${inputs.zen-browser.packages.x86_64-linux.zen-browser}/bin/zen";
+    DEFAULT_BROWSER = "${inputs.zen-browser.packages.x86_64-linux.generic}/bin/zen";
   };
 
   xsession.numlock.enable = true;
