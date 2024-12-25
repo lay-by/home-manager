@@ -36,8 +36,8 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos/configuration.nix
-          inputs.nur.nixosModules.nur
-          { nixpkgs.overlays = [ inputs.nur.overlay ]; }
+          inputs.nur.modules.nixos.default
+          { nixpkgs.overlays = [ inputs.nur.overlays.default ]; }
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

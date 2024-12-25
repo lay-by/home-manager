@@ -175,7 +175,7 @@
     EDITOR = "nvim";
     TERMINAL = "alacritty";
     TERM = "alacritty";
-    DEFAULT_BROWSER = "${inputs.zen-browser.packages.x86_64-linux.generic}/bin/zen";
+    DEFAULT_BROWSER = "${inputs.zen-browser.packages.x86_64-linux.default}/bin/zen";
   };
 
   xsession.numlock.enable = true;

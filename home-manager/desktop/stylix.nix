@@ -19,7 +19,7 @@
 
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts;
+        package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font Mono";
       };
 
