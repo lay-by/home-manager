@@ -144,6 +144,15 @@
     };
     fish.enable = true;
 
+    helix = {
+      enable = true;
+      languages.language = [{
+        name = "nix";
+        auto-format = true;
+        formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+      }];
+    };
+
     #Fuckery to get around Titanfall 2's FPS cap. 
     mangohud = {
       enable = true;

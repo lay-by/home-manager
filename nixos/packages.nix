@@ -29,9 +29,9 @@
       ssh-askpass-fullscreen
 
       # QEMU
-      qemu
-      quickemu
-      virt-manager
+      #qemu
+      #quickemu
+      #virt-manager
 
       # Security
       wireshark

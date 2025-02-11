@@ -3,8 +3,9 @@
   lib,
   config,
   ...
-}:
-{
+}: let
+  package = config.boot.kernelPackages.nvidiaPackages.stable;
+in {
   hardware = {
     graphics = {
       enable = true;
@@ -26,7 +27,7 @@
       open = true;
       modesetting.enable = true;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = pkgs.nvidia-patch.patch-nvenc (pkgs.nvidia-patch.patch-fbc package);
     };
   };
 }

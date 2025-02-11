@@ -7,6 +7,7 @@
     autoEnable = true;
 
     targets.hyprlock.enable = false;
+    targets.spicetify.enable = false;
     #targets.hyprpaper.enable = false;
 
     image = /home/hushh/Pictures/papes/city.jpg;

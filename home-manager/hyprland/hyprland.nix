@@ -2,6 +2,8 @@ _: {
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+
+      ecosystem.no_update_news = true;
       monitor = [
         ",preferred,auto,auto, vrr, 1"
         "Unknown-1, disable"

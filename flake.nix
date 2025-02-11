@@ -27,7 +27,10 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    ucodenix.url = "github:e-tho/ucodenix";    
+    ucodenix.url = "github:e-tho/ucodenix";
+
+    nvidia-patch.url = "github:icewind1991/nvidia-patch-nixos";  
+    nvidia-patch.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: {
@@ -37,7 +40,7 @@
         modules = [
           ./nixos/configuration.nix
           inputs.nur.modules.nixos.default
-          { nixpkgs.overlays = [ inputs.nur.overlays.default ]; }
+          { nixpkgs.overlays = [ inputs.nur.overlays.default inputs.nvidia-patch.overlays.default ]; }
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
